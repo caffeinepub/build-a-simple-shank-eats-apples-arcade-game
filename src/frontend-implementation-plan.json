@@ -1,0 +1,67 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Automatic ZIP generation and stable in-app download link",
+  "requirements": [
+    {
+      "id": "REQ-18",
+      "summary": "Remove any interactive “generate ZIP” confirmation and make ZIP generation part of the non-interactive build/export flow.",
+      "acceptanceCriteria": [
+        "A production build run produces a ZIP artifact without requiring any interactive confirmation step.",
+        "No user-facing prompt asking whether to generate the ZIP is shown anywhere in the app or the build/export flow."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/scripts/export-zip.mjs",
+          "operation": "modify",
+          "description": "Ensure the ZIP generation script is fully non-interactive (no prompts) and can be run as an always-on step in the build/export flow; keep it failing fast with clear errors when dist/ is missing."
+        },
+        {
+          "path": "frontend/scripts/build-with-zip.mjs",
+          "operation": "create",
+          "description": "Add a non-interactive production build wrapper that runs the frontend build and then runs frontend/scripts/export-zip.mjs automatically so ZIP generation is always part of build output."
+        },
+        {
+          "path": "frontend/EXPORTING.md",
+          "operation": "modify",
+          "description": "Update export/build documentation to reflect that ZIP generation is automatic and remove any language implying the user is asked/needs to confirm ZIP generation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Always publish the latest ZIP at the stable static path /shank-game.zip as part of production build output.",
+      "acceptanceCriteria": [
+        "After a production build, the static output directory contains shank-game.zip at its root so it is reachable at /shank-game.zip.",
+        "Requesting GET /shank-game.zip returns the latest ZIP file (HTTP 200) after deployment."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/scripts/export-zip.mjs",
+          "operation": "modify",
+          "description": "Harden the copy-into-dist behavior so the ZIP is always written/overwritten to dist/shank-game.zip on every run, ensuring the deployed static output serves it at /shank-game.zip."
+        },
+        {
+          "path": "frontend/scripts/build-with-zip.mjs",
+          "operation": "create",
+          "description": "Ensure this production build entry script produces a dist/ that includes shank-game.zip at the dist root on every run (by chaining build -> export-zip)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Provide a stable in-app “Download ZIP” control that directly downloads /shank-game.zip with no intermediate dialogs.",
+      "acceptanceCriteria": [
+        "The UI includes a visible control labeled in English (e.g., “Download ZIP”) that links directly to /shank-game.zip.",
+        "Clicking the control initiates a file download in the browser without additional prompts beyond the browser’s normal download behavior."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GamePage.tsx",
+          "operation": "modify",
+          "description": "Keep the header download control linking directly to /shank-game.zip using a normal anchor download flow, and ensure the English label “Download ZIP” is visibly present across breakpoints (not only via aria-label)."
+        }
+      ]
+    }
+  ]
+}

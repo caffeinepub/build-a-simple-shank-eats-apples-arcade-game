@@ -1,0 +1,60 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-remove-any-confirm-ask-to-generate-zip-step-from-the-end-to-end-build-export-flow-and-ensure-the-production-zip-is-always-generated-automatically-as-part-of-the-build-output",
+      "featureTitle": "Remove any “confirm/ask-to-generate ZIP” step from the end-to-end build/export flow and ensure the production ZIP is always generated automatically as part of the build output.",
+      "files": [
+        "frontend/EXPORTING.md",
+        "frontend/scripts/build-with-zip.mjs"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-18"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-deployed-static-site-always-serves-the-latest-zip-at-the-stable-path-shank-game-zip-copied-into-the-static-build-output-directory-on-every-production-build",
+      "featureTitle": "Ensure the deployed static site always serves the latest ZIP at the stable path /shank-game.zip (copied into the static build output directory) on every production build.",
+      "files": [
+        "frontend/scripts/build-with-zip.mjs"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-19"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-keep-or-add-if-missing-a-stable-in-app-zip-download-link-that-directly-downloads-shank-game-zip-with-no-intermediate-dialogs-confirmations-or-secondary-pages",
+      "featureTitle": "Keep (or add if missing) a stable in-app ZIP download link that directly downloads /shank-game.zip with no intermediate dialogs, confirmations, or secondary pages.",
+      "files": [
+        "frontend/src/pages/GamePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

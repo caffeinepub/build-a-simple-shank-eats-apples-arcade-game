@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 15,
+  "summary": "Create a \"shank\" game where the shank eats apples.",
+  "architectural_notes": [
+    "ZIP export flow should run automatically and provide the ZIP (and link) without interactive confirmation prompts."
+  ],
+  "known_issues": [
+    "Build/deploy pipeline rejected domain name \"\\\"shank-eats-apples\\\"-game\" due to invalid characters; domain must be 5–50 chars and contain only letters, numbers, and hyphens.",
+    "User reports regression/UX issue: system keeps asking whether to generate ZIP instead of delivering it as requested."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-playable-browser-game-where-the-player-controls-a-shank-character-that-moves-around-a-bounded-playfield-and-eats-apples-to-increase-score-and-length-size-snake-like-gameplay",
+      "title": "Create a playable browser game where the player controls a \"shank\" character that moves around a bounded playfield and eats apples to increase score and length/size (snake-like gameplay).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-core-game-rules-and-states-start-playing-paused-and-game-over-include-collision-rules-wall-self-collision-that-trigger-game-over-and-a-restart-flow",
+      "title": "Implement core game rules and states: Start, Playing, Paused, and Game Over; include collision rules (wall/self collision) that trigger Game Over and a Restart flow.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-controls-and-accessibility-keyboard-controls-arrow-keys-and-or-wasd-for-movement-plus-on-screen-directional-buttons-suitable-for-mobile-touch",
+      "title": "Add controls and accessibility: keyboard controls (arrow keys and/or WASD) for movement, plus on-screen directional buttons suitable for mobile/touch.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-coherent-retro-arcade-visual-theme-colors-typography-layout-and-apply-it-consistently-across-the-game-screens-start-playing-pause-game-over-avoiding-blue-purple-as-primary-colors",
+      "title": "Create a coherent retro-arcade visual theme (colors, typography, layout) and apply it consistently across the game screens (Start/Playing/Pause/Game Over), avoiding blue & purple as primary colors.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-basic-hud-elements-current-score-and-best-score-best-score-stored-locally-in-the-browser-displayed-during-gameplay-and-on-game-over",
+      "title": "Add basic HUD elements: current score and best score (best score stored locally in the browser) displayed during gameplay and on Game Over.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-required-generated-images-as-static-assets-under-frontend-public-assets-generated-and-render-them-in-the-ui-for-the-shank-apple-and-optionally-a-background-do-not-serve-images-from-the-backend",
+      "title": "Add the required generated images as static assets under frontend/public/assets/generated and render them in the UI (for the shank, apple, and optionally a background). Do not serve images from the backend.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-level-system-to-the-game-with-clear-progression-and-increasing-difficulty-across-multiple-levels",
+      "title": "Add a level system to the game with clear progression and increasing difficulty across multiple levels.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-per-level-layouts-by-introducing-impassable-obstacle-cells-in-the-playfield-and-enforce-collision-rules-against-them",
+      "title": "Implement per-level layouts by introducing impassable obstacle cells in the playfield and enforce collision rules against them.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-selectable-skins-for-the-shank-and-optionally-the-apple-with-a-simple-selection-ui-and-persistence-in-localstorage",
+      "title": "Add selectable skins for the shank (and optionally the apple) with a simple selection UI and persistence in localStorage.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-playfield-rendering-to-support-level-obstacles-and-skin-based-sprite-selection-while-keeping-the-existing-retro-arcade-visual-style-consistent",
+      "title": "Update the playfield rendering to support level obstacles and skin-based sprite selection while keeping the existing retro-arcade visual style consistent.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-repeatable-export-flow-that-produces-a-single-zip-file-containing-a-production-ready-static-build-of-the-frontend-game-suitable-for-uploading-to-third-party-sites-e-g-playstory",
+      "title": "Add a repeatable export flow that produces a single ZIP file containing a production-ready static build of the frontend game suitable for uploading to third-party sites (e.g., PlayStory).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-end-user-developer-documentation-describing-how-to-generate-the-zip-locally-including-the-exact-command-s-to-run-and-where-the-zip-output-file-is-created",
+      "title": "Add end-user/developer documentation describing how to generate the ZIP locally, including the exact command(s) to run and where the ZIP output file is created.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-frontend-provides-a-repeatable-one-command-zip-export-flow-that-produces-a-single-production-ready-archive-at-frontend-export-shank-game-zip-from-the-current-static-build",
+      "title": "Ensure the frontend provides a repeatable, one-command ZIP export flow that produces a single production-ready archive at frontend/export/shank-game.zip from the current static build.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-and-complete-the-zip-export-documentation-so-users-can-generate-the-zip-locally-with-exact-commands-and-a-clearly-stated-output-location",
+      "title": "Fix and complete the ZIP export documentation so users can generate the ZIP locally with exact commands and a clearly stated output location.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-latest-production-zip-build-available-as-a-static-downloadable-file-and-provide-a-stable-in-app-download-link-to-it",
+      "title": "Make the latest production ZIP build available as a static downloadable file and provide a stable in-app download link to it.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-zip-export-automation-to-also-produce-or-copy-a-deployable-shank-game-zip-into-the-built-static-output-directory-after-the-production-build-completes-without-requiring-manual-file-moves",
+      "title": "Update the ZIP export automation to also produce (or copy) a deployable shank-game.zip into the built static output directory after the production build completes, without requiring manual file moves.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-build-deploy-pipeline-configuration-so-the-application-domain-name-used-for-deployment-is-valid-5-50-characters-only-letters-numbers-and-hyphens-and-does-not-include-escaped-quotes",
+      "title": "Fix the build/deploy pipeline configuration so the application domain name used for deployment is valid (5–50 characters, only letters, numbers, and hyphens) and does not include escaped quotes.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-any-confirm-ask-to-generate-zip-step-from-the-end-to-end-build-export-flow-and-ensure-the-production-zip-is-always-generated-automatically-as-part-of-the-build-output",
+      "title": "Remove any “confirm/ask-to-generate ZIP” step from the end-to-end build/export flow and ensure the production ZIP is always generated automatically as part of the build output.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-deployed-static-site-always-serves-the-latest-zip-at-the-stable-path-shank-game-zip-copied-into-the-static-build-output-directory-on-every-production-build",
+      "title": "Ensure the deployed static site always serves the latest ZIP at the stable path /shank-game.zip (copied into the static build output directory) on every production build.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-or-add-if-missing-a-stable-in-app-zip-download-link-that-directly-downloads-shank-game-zip-with-no-intermediate-dialogs-confirmations-or-secondary-pages",
+      "title": "Keep (or add if missing) a stable in-app ZIP download link that directly downloads /shank-game.zip with no intermediate dialogs, confirmations, or secondary pages.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a game concept: a shank character that eats apples.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add multiple levels with increasing difficulty/varied layouts.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add selectable character skins (and possibly apple skins) for the shank game.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Generate an exported downloadable ZIP build of the game for uploading (e.g., to PlayStory/Play Store).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Prepare and provide a downloadable ZIP build link for the latest game build.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Automatically generate/provide the ZIP file (and download link if applicable) without prompting the user again.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Build a simple \"Shank Eats Apples\" arcade game",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

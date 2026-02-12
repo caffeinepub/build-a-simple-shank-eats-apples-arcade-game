@@ -1,0 +1,42 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-12T12:21:17.072Z",
+  "summary": "The diff adds a non-interactive build script intended to build the frontend and then generate a ZIP, and it adds an in-app direct download link to /shank-game.zip. However, the diff does not provide clear evidence that the standard/production build command is wired to always run this ZIP generation on every production build, and there is an unrelated backend change.",
+  "missing_requirements": [
+    {
+      "id": "REQ-18",
+      "requirement": "Remove any confirm/ask-to-generate ZIP step and ensure the production ZIP is always generated automatically as part of the build output.",
+      "reason": "A new script (build-with-zip.mjs) runs build then export-zip, but the diff does not show that the normal production build flow now uses this script (e.g., via package.json build script changes). Without that wiring, it is not evidenced that a production build run always generates the ZIP.",
+      "evidence": [
+        "frontend/scripts/build-with-zip.mjs"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "requirement": "Ensure the deployed static site always serves the latest ZIP at stable path /shank-game.zip by copying it into the static build output directory root on every production build.",
+      "reason": "The diff shows a build helper script that claims the ZIP will be available at /shank-game.zip, but it does not show the actual ZIP copy into the static output directory (nor that this runs on every production build).",
+      "evidence": [
+        "frontend/scripts/build-with-zip.mjs"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend main actor was replaced/emptied (actor {}).",
+      "reason": "The BuildRequest focuses on frontend static ZIP generation and download behavior and includes constraints about keeping the backend as single-actor; it does not request changing backend behavior or removing backend code.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "confidence": 0.63,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/EXPORTING.md",
+    "frontend/scripts/build-with-zip.mjs",
+    "frontend/src/pages/GamePage.tsx",
+    "project_state.json"
+  ]
+}

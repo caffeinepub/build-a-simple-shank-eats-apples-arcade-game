@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.125rem;
+        /* Dark arcade cabinet background */
+        --background: 0.12 0.02 280;
+        --foreground: 0.95 0.08 85;
+        /* Amber primary (classic arcade) */
+        --card: 0.18 0.03 280;
+        --card-foreground: 0.95 0.08 85;
+        --popover: 0.18 0.03 280;
+        --popover-foreground: 0.95 0.08 85;
+        /* Bright amber accent */
+        --primary: 0.75 0.15 65;
+        --primary-foreground: 0.15 0.02 280;
+        /* Green secondary (retro terminal) */
+        --secondary: 0.65 0.18 145;
+        --secondary-foreground: 0.15 0.02 280;
+        --muted: 0.25 0.03 280;
+        --muted-foreground: 0.55 0.05 85;
+        --accent: 0.70 0.20 145;
+        --accent-foreground: 0.15 0.02 280;
+        /* Red for game over */
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.98 0.05 85;
+        --border: 0.35 0.08 85;
+        --input: 0.30 0.05 85;
+        --ring: 0.75 0.15 65;
+        --chart-1: 0.75 0.15 65;
+        --chart-2: 0.65 0.18 145;
+        --chart-3: 0.55 0.22 25;
+        --chart-4: 0.70 0.18 200;
+        --chart-5: 0.68 0.16 320;
+    }
+
+    .dark {
+        --background: 0.12 0.02 280;
+        --foreground: 0.95 0.08 85;
+        --card: 0.18 0.03 280;
+        --card-foreground: 0.95 0.08 85;
+        --popover: 0.18 0.03 280;
+        --popover-foreground: 0.95 0.08 85;
+        --primary: 0.75 0.15 65;
+        --primary-foreground: 0.15 0.02 280;
+        --secondary: 0.65 0.18 145;
+        --secondary-foreground: 0.15 0.02 280;
+        --muted: 0.25 0.03 280;
+        --muted-foreground: 0.55 0.05 85;
+        --accent: 0.70 0.20 145;
+        --accent-foreground: 0.15 0.02 280;
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.98 0.05 85;
+        --border: 0.35 0.08 85;
+        --input: 0.30 0.05 85;
+        --ring: 0.75 0.15 65;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Orbitron', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Press Start 2P', cursive;
+    }
+}
+
+@layer utilities {
+    .arcade-glow {
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+    
+    .arcade-border {
+        border: 2px solid oklch(var(--primary));
+        box-shadow: 
+            0 0 10px oklch(var(--primary) / 0.5),
+            inset 0 0 10px oklch(var(--primary) / 0.2);
+    }
+
+    .scanlines {
+        position: relative;
+    }
+    
+    .scanlines::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+        pointer-events: none;
+        z-index: 10;
+    }
+}

@@ -1,0 +1,84 @@
+{
+  "kind": "build_request",
+  "title": "Deliver ZIP download automatically without prompting the user",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-18",
+      "text": "Remove any “confirm/ask-to-generate ZIP” step from the end-to-end build/export flow and ensure the production ZIP is always generated automatically as part of the build output.",
+      "target": "unknown",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "I told you to give me ZIP file don't not ask me again this"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A production build run produces a ZIP artifact without requiring any interactive confirmation step.",
+        "No user-facing prompt asking whether to generate the ZIP is shown anywhere in the app or the build/export flow."
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Ensure the deployed static site always serves the latest ZIP at the stable path /shank-game.zip (copied into the static build output directory) on every production build.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "I told you to give me ZIP file don't not ask me again this"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After a production build, the static output directory contains shank-game.zip at its root so it is reachable at /shank-game.zip.",
+        "Requesting GET /shank-game.zip returns the latest ZIP file (HTTP 200) after deployment."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Keep (or add if missing) a stable in-app ZIP download link that directly downloads /shank-game.zip with no intermediate dialogs, confirmations, or secondary pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "I told you to give me ZIP file don't not ask me again this"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The UI includes a visible control labeled in English (e.g., “Download ZIP”) that links directly to /shank-game.zip.",
+        "Clicking the control initiates a file download in the browser without additional prompts beyond the browser’s normal download behavior."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain single-actor Motoko (backend/main.mo); only add migration.mo if an upgrade requires state migration.",
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or anything under frontend/src/components/ui.",
+    "Do not serve ZIP files from the backend; the ZIP must be a static asset in the built frontend output."
+  ],
+  "nonGoals": [
+    "Adding new gameplay mechanics, levels, obstacles, scoring rules, or skins.",
+    "Changing authentication behavior (Internet Identity).",
+    "Integrating third-party hosting, storage, or download services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Do not ask for confirmation before generating/providing the ZIP; generate/provide it automatically."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

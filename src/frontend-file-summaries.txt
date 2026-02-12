@@ -1,0 +1,19 @@
+{
+  "frontend/src/index.css": "Global styles with retro-arcade theme using amber/green neon colors, Press Start 2P and Orbitron fonts, arcade glow effects, scanlines, and OKLCH color system.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with arcade fonts (Press Start 2P, Orbitron), neon shadow utilities, custom animations (pulse-glow, blink), and minimal border radius for retro aesthetic.",
+  "frontend/src/App.tsx": "Root application component that renders the GamePage as the main view.",
+  "frontend/src/game/useShankGame.ts": "Core game logic hook managing snake movement, collision detection (walls, self, obstacles), apple spawning (avoiding obstacles), multi-level progression with LEVEL_COMPLETE state, score tracking, skin selection with localStorage persistence, and keyboard controls.",
+  "frontend/src/game/Playfield.tsx": "Renders the game grid with arcade border, scanlines effect, positioned obstacles, shank segments using selected skin sprite, and animated apple using selected skin sprite.",
+  "frontend/src/components/TouchControls.tsx": "Mobile-friendly directional control pad with four arrow buttons styled with neon amber glow for touch input.",
+  "frontend/src/pages/GamePage.tsx": "Main game page with HUD, skin selectors, level complete overlay, game state overlays, touch controls, retro-arcade themed header with always-visible \"DOWNLOAD ZIP\" button linking to /shank-game.zip, and footer with social links and attribution.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as the game requires no backend queries; all state is managed locally.",
+  "frontend/src/game/levels.ts": "Defines 5 level configurations with increasing difficulty (target apples, speed multipliers, and obstacle layouts), plus helper functions for level management and obstacle collision detection.",
+  "frontend/src/game/skins.ts": "Defines shank and apple skin options with sprite paths, provides localStorage persistence helpers, and exports functions to load/save/retrieve skin selections.",
+  "frontend/scripts/export-zip.mjs": "Node.js script that validates dist/ exists, creates export directory, packages the production build into frontend/export/shank-game.zip, and copies it to dist/shank-game.zip for deployment with clear error messaging.",
+  "frontend/package.json": "Package manifest with pnpm scripts including export:zip command and archiver dependency for creating ZIP exports of the static game build.",
+  "frontend/EXPORTING.md": "Complete documentation explaining the automatic ZIP generation process, output locations, deployment instructions, validation steps, and troubleshooting guide with no mention of interactive prompts.",
+  "frontend/.gitignore": "Git ignore file that excludes build artifacts (dist/), export directory, and ZIP files from version control.",
+  "frontend/deploy/domain.txt": "Single-line deployment domain configuration file containing the valid domain string \"shank-eats-apples-game\" without quotes for the deployment pipeline.",
+  "frontend/scripts/validate-deploy-domain.mjs": "Node.js validation script that reads deploy/domain.txt, checks for valid characters (lowercase letters, numbers, hyphens only), validates length (5-50 chars), detects quotes or invalid characters, and provides actionable English error messages for CI/build usage.",
+  "frontend/scripts/build-with-zip.mjs": "Production build automation script that runs the frontend build and automatically generates the ZIP export without any interactive prompts, placing the ZIP in both export/ and dist/ directories."
+}

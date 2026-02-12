@@ -1,2 +1,3 @@
-# build-a-simple-shank-eats-apples-arcade-game
-Exported from Caffeine project: Build a simple "Shank Eats Apples" arcade game
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`
